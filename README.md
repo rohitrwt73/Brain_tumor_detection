@@ -57,8 +57,10 @@ python app.py
 The Tkinter window will open, and you can begin uploading MRI scans for classification.
 
 📂 File Structure
+```
 ├── app.py                                  # The main Tkinter application script
 ├── brain_tumor_vgg16.h5                    # The saved VGG16 model
 ├── brain_tumor_hybrid_cnn_transformer.h5   # The saved CNN-Transformer model
 ├── README.md                               # This README file
 └── (optional) requirements.txt             # File listing dependencies
+```
