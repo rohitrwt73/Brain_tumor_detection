@@ -40,7 +40,7 @@ By combining the predictions of these two models, the final ensemble achieves a 
 1. Install Dependencies
 This project requires the following libraries. You can install them using pip:
 
-pip install tensorflow opencv-python Pillow
+```pip install tensorflow opencv-python Pillow```
 
 2. Download the Pre-trained Models
 You will need the two trained model files (.h5). Place them in the root directory of the project:
@@ -52,7 +52,7 @@ brain_tumor_hybrid_cnn_transformer.h5
 🚀 How to Run
 Once the setup is complete, you can launch the application by running the app.py script:
 
-python app.py
+```python app.py```
 
 The Tkinter window will open, and you can begin uploading MRI scans for classification.
 
