@@ -1,7 +1,5 @@
-Flask
+gradio
 tensorflow
 numpy
 opencv-python-headless
 Pillow
-gunicorn
-Werkzeug

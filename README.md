@@ -2,31 +2,39 @@
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.20-orange)
-![Flask](https://img.shields.io/badge/Flask-Web_App-green)
 ![Deep Learning](https://img.shields.io/badge/Deep_Learning-VGG16_+_CNN_Transformer-red)
 ![Accuracy](https://img.shields.io/badge/Accuracy-99.7%25-success)
+![HuggingFace](https://img.shields.io/badge/Deployment-HuggingFace-yellow)
 
 ## 📌 Overview
 
-Brain Tumor Detection is a deep learning-based web application that detects brain tumors from MRI scans using an ensemble of two powerful models:
+Brain Tumor Detection is a deep learning-based application that detects brain tumors from MRI scans using an ensemble of two powerful models:
 
 * VGG16 Transfer Learning Model
 * Hybrid CNN-Transformer Model
 
-The predictions from both models are combined through ensemble averaging to improve classification accuracy and reliability. Users can upload MRI images through a modern web interface and receive real-time predictions, confidence scores, and probability analysis.
+The predictions from both models are combined through ensemble averaging to improve classification accuracy and reliability. Users can upload MRI images and receive real-time predictions, confidence scores, and probability analysis.
+
+---
+
+## 🌐 Live Demo
+
+**Live Application:** https://huggingface.co/spaces/rohit731/cortexAI
+
+Upload an MRI scan and receive real-time predictions powered by deep learning.
 
 ---
 
 ## ✨ Features
 
-* Upload MRI brain scan images through a web interface
+* Upload MRI brain scan images
 * Detect Tumor or Healthy brain conditions
 * Ensemble prediction using VGG16 and Hybrid CNN-Transformer
 * Real-time confidence score generation
-* Interactive probability visualization using Chart.js
+* Interactive probability visualization
 * MRI image preview before analysis
-* Modern glassmorphism-inspired UI
-* Flask-based deployment-ready application
+* Deep learning-based classification
+* Public deployment using Hugging Face Spaces
 
 ---
 
@@ -48,11 +56,11 @@ The predictions from both models are combined through ensemble averaging to impr
 
 ### Home Page
 
-The application allows users to upload MRI scans and perform real-time brain tumor detection using an ensemble deep learning model.
+The application allows users to upload MRI scans and perform real-time brain tumor detection using deep learning models.
 
 ### Prediction Result
 
-After image upload, the system displays the predicted class, confidence score, model outputs, and probability analysis through interactive visualizations.
+After image upload, the system displays the predicted class, confidence score, and probability analysis through interactive visualizations.
 
 ---
 
@@ -111,30 +119,33 @@ ensemble_prediction = (
 
 ## ⚙️ Tech Stack
 
-### Backend
+### Programming Language
 
 * Python
-* Flask
-* TensorFlow
-* NumPy
-* OpenCV
-
-### Frontend
-
-* HTML5
-* CSS3
-* JavaScript
-* Chart.js
 
 ### Deep Learning
 
+* TensorFlow
 * VGG16
 * CNN-Transformer
 * Ensemble Learning
 
+### Computer Vision
+
+* OpenCV
+* NumPy
+* Pillow
+
+### Web Technologies
+
+* Gradio
+* HTML
+* CSS
+* JavaScript
+
 ### Deployment
 
-* Render
+* Hugging Face Spaces
 * GitHub
 
 ---
@@ -146,8 +157,7 @@ Brain_tumor_detection/
 │
 ├── app.py
 ├── requirements.txt
-├── Procfile
-├── render.yaml
+├── README.md
 │
 ├── brain_tumor_vgg16.h5
 ├── brain_tumor_hybrid_cnn_transformer.h5
@@ -155,13 +165,6 @@ Brain_tumor_detection/
 ├── images/
 │   ├── home_pred.png
 │   └── graph.png
-│
-├── templates/
-│   └── index.html
-│
-└── static/
-    ├── style.css
-    └── uploads/
 ```
 
 ---
@@ -171,7 +174,7 @@ Brain_tumor_detection/
 ### Clone Repository
 
 ```bash
-git clone https://github.com/your-username/Brain_tumor_detection.git
+git clone https://github.com/rohitrwt73/Brain_tumor_detection.git
 cd Brain_tumor_detection
 ```
 
@@ -187,10 +190,10 @@ pip install -r requirements.txt
 python app.py
 ```
 
-Open your browser and visit:
+Open:
 
 ```text
-http://127.0.0.1:5000
+http://127.0.0.1:7860
 ```
 
 ---
@@ -201,9 +204,9 @@ http://127.0.0.1:5000
 2. Image is preprocessed and resized to 150×150 pixels.
 3. VGG16 model generates a prediction.
 4. Hybrid CNN-Transformer model generates a prediction.
-5. Predictions are averaged using ensemble learning.
+5. Predictions are combined using ensemble learning.
 6. Final classification and confidence score are generated.
-7. Results are displayed with probability analysis charts.
+7. Results are displayed through interactive visualizations.
 
 ---
 
@@ -219,11 +222,30 @@ The ensemble approach improved robustness and achieved the highest overall perfo
 
 ---
 
+## 🚀 Deployment
+
+This project is deployed using Hugging Face Spaces for public access and demonstration.
+
+### Deployment Steps
+
+1. Create a Hugging Face account.
+2. Create a new Space.
+3. Select Gradio as the SDK.
+4. Upload:
+
+   * app.py
+   * requirements.txt
+   * brain_tumor_vgg16.h5
+5. Wait for the build to complete.
+6. Share the generated public URL.
+
+---
+
 ## 🔮 Future Enhancements
 
 * Multi-class brain tumor classification
 * Grad-CAM explainability visualization
-* PDF report generation
+* PDF medical report generation
 * Patient history management
 * Cloud-based model serving
 * Medical imaging dashboard
@@ -234,7 +256,9 @@ The ensemble approach improved robustness and achieved the highest overall perfo
 
 **Rohit Singh Rawat**
 
-Developed as a deep learning and computer vision project for automated brain tumor detection using ensemble learning techniques.
+Machine Learning and Full-Stack Developer
+
+Developed a deep learning-based brain tumor detection system using ensemble learning, transfer learning, and computer vision techniques for automated MRI scan classification.
 
 ---
 
