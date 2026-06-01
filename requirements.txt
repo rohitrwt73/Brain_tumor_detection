@@ -1,3 +1,7 @@
+Flask
 tensorflow
-opencv-python
+numpy
+opencv-python-headless
 Pillow
+gunicorn
+Werkzeug

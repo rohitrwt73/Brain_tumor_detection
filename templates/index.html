@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Tumor Detection AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="background"></div>
+
+<div class="container">
+
+    <div class="glass-card main-card">
+
+        <div class="header">
+            <h1>🧠 Brain Tumor Detection AI</h1>
+            <p>Hybrid Ensemble Model (VGG16 + CNN Transformer)</p>
+        </div>
+
+        <form action="/predict" method="POST" enctype="multipart/form-data">
+
+            <div class="upload-section">
+                <input
+                    type="file"
+                    name="image"
+                    id="image"
+                    accept="image/*"
+                    required
+                >
+
+                <button type="submit" class="upload-btn">
+                    Analyze MRI Scan
+                </button>
+            </div>
+
+        </form>
+
+        {% if error %}
+        <div class="error-box">
+            {{ error }}
+        </div>
+        {% endif %}
+
+    </div>
+
+    {% if prediction %}
+
+    <div class="results-grid">
+
+        <div class="glass-card image-card">
+            <h2>Uploaded MRI</h2>
+
+            <img
+                src="{{ image_path }}"
+                alt="MRI Image"
+                class="preview-image"
+            >
+        </div>
+
+        <div class="glass-card prediction-card">
+
+            <h2>Diagnosis Result</h2>
+
+            {% if prediction == "Tumor" %}
+                <div class="prediction-badge tumor">
+                    {{ prediction }}
+                </div>
+            {% else %}
+                <div class="prediction-badge healthy">
+                    {{ prediction }}
+                </div>
+            {% endif %}
+
+            <div class="confidence-section">
+
+                <h3>Confidence</h3>
+
+                <div class="progress-bar">
+                    <div
+                        class="progress-fill"
+                        style="width: {{ confidence }}%;"
+                    ></div>
+                </div>
+
+                <p class="confidence-text">
+                    {{ confidence }}%
+                </p>
+
+            </div>
+
+            <div class="model-info">
+
+                <div class="model-box">
+                    <h4>VGG16</h4>
+                    <p>{{ vgg_prediction }}%</p>
+                </div>
+
+                <div class="model-box">
+                    <h4>Hybrid CNN-Transformer</h4>
+                    <p>{{ hybrid_prediction }}%</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="glass-card chart-card">
+
+        <h2>Probability Analysis</h2>
+
+        <canvas id="probabilityChart"></canvas>
+
+    </div>
+
+    <script>
+        const tumorProbability =
+            parseFloat("{{ tumor_probability | default(0) }}");
+
+        const healthyProbability =
+            parseFloat("{{ healthy_probability | default(0) }}");
+
+        const ctx =
+            document.getElementById("probabilityChart");
+
+        new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: ["Tumor", "Healthy"],
+                datasets: [{
+                    label: "Probability (%)",
+                    data: [
+                        tumorProbability,
+                        healthyProbability
+                    ],
+                    borderWidth: 2,
+                    borderRadius: 12
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+    </script>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
