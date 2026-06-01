@@ -1,66 +1,243 @@
-# CortexAI: Hybrid Ensemble Brain Tumor Detector 🧠
+# 🧠 Brain Tumor Detection using Ensemble of VGG16 and Hybrid CNN-Transformer
 
-This project is a desktop application that uses a sophisticated deep learning ensemble model to classify brain MRI scans as either "Tumor" or "Healthy." It combines the strengths of a pre-trained VGG16 model with a custom-built hybrid CNN-Transformer model to achieve high accuracy and robust performance. The application features a user-friendly graphical interface built with Tkinter for real-time image analysis.
+![Python](https://img.shields.io/badge/Python-3.10-blue)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.20-orange)
+![Flask](https://img.shields.io/badge/Flask-Web_App-green)
+![Deep Learning](https://img.shields.io/badge/Deep_Learning-VGG16_+_CNN_Transformer-red)
+![Accuracy](https://img.shields.io/badge/Accuracy-99.7%25-success)
 
+## 📌 Overview
 
-Screenshots:
-![App Screenshot](/app_images/bt1.png)
-![App Screenshot](/app_images/bt2.png)
-![App Screenshot](/app_images/bt3.png)
+Brain Tumor Detection is a deep learning-based web application that detects brain tumors from MRI scans using an ensemble of two powerful models:
+
+* VGG16 Transfer Learning Model
+* Hybrid CNN-Transformer Model
+
+The predictions from both models are combined through ensemble averaging to improve classification accuracy and reliability. Users can upload MRI images through a modern web interface and receive real-time predictions, confidence scores, and probability analysis.
 
 ---
 
 ## ✨ Features
 
-- **Upload & Classify:** Easily upload an MRI scan image from your computer.
-- **Instant Prediction:** Get a real-time classification of "Tumor" or "Healthy."
-- **Confidence Score:** View the model's confidence in its prediction.
-- **Ensemble Power:** Utilizes an advanced ensemble of two distinct deep learning models for enhanced accuracy.
-- **Intuitive GUI:** A simple and clean interface built with Python's Tkinter library.
+* Upload MRI brain scan images through a web interface
+* Detect Tumor or Healthy brain conditions
+* Ensemble prediction using VGG16 and Hybrid CNN-Transformer
+* Real-time confidence score generation
+* Interactive probability visualization using Chart.js
+* MRI image preview before analysis
+* Modern glassmorphism-inspired UI
+* Flask-based deployment-ready application
 
 ---
 
-## 🤖 Models Used
+## 📸 Application Screenshots
 
-This project employs an **ensemble learning** strategy by averaging the predictions of two powerful models:
+<table>
+<tr>
+<td align="center">
+<b>Home Page and Prediction Result</b><br><br>
+<img src="images/home_pred.png" width="450"/>
+</td>
 
-1.  **VGG16 (Transfer Learning):** A deep Convolutional Neural Network (CNN) pre-trained on the ImageNet dataset. It excels at recognizing general image features, providing a strong baseline for classification.
-    - **Validation Accuracy:** 98.85%
+<td align="center">
+<b>Graphical Result</b><br><br>
+<img src="images/graph.png" width="450"/>
+</td>
+</tr>
+</table>
 
-2.  **Hybrid CNN-Transformer:** A custom-built model that uses a CNN base to extract local features (edges, textures) and a Transformer encoder to analyze the global relationships between these features, providing a holistic understanding of the image.
-    - **Validation Accuracy:** 59.24%
+### Home Page
 
-**Ensemble Performance:**
-By combining the predictions of these two models, the final ensemble achieves a superior accuracy of **99.51%**, demonstrating how a weaker, diverse model can help correct the errors of a stronger one.
+The application allows users to upload MRI scans and perform real-time brain tumor detection using an ensemble deep learning model.
+
+### Prediction Result
+
+After image upload, the system displays the predicted class, confidence score, model outputs, and probability analysis through interactive visualizations.
 
 ---
 
-## 🛠️ Setup and Installation
+## 📊 Dataset Information
 
-1. Install Dependencies
-This project requires the following libraries. You can install them using pip:
+The model was trained and evaluated on a Brain MRI Dataset consisting of:
 
-```pip install tensorflow opencv-python Pillow```
+| Metric          | Count          |
+| --------------- | -------------- |
+| Total Images    | 5,093          |
+| Training Images | 4,074          |
+| Testing Images  | 1,019          |
+| Classes         | Tumor, Healthy |
 
-2. Download the Pre-trained Models
-You will need the two trained model files (.h5). Place them in the root directory of the project:
+---
 
-brain_tumor_vgg16.h5
+## 🏗️ Model Architecture
 
-brain_tumor_hybrid_cnn_transformer.h5
+### 1. VGG16 Transfer Learning Model
 
-🚀 How to Run
-Once the setup is complete, you can launch the application by running the app.py script:
+* Pre-trained VGG16 backbone
+* Global Average Pooling Layer
+* Dense Layers
+* Dropout Regularization
+* Sigmoid Output Layer
 
-```python app.py```
+**Accuracy Achieved:** 99.63%
 
-The Tkinter window will open, and you can begin uploading MRI scans for classification.
+---
 
-📂 File Structure
+### 2. Hybrid CNN-Transformer Model
+
+* Convolutional Neural Network feature extraction
+* Multi-Head Attention Transformer Block
+* Layer Normalization
+* Dense Classification Layers
+* Sigmoid Output Layer
+
+**Accuracy Achieved:** 59%
+
+---
+
+### 3. Ensemble Learning
+
+Final predictions are generated by averaging outputs from both models:
+
+```python
+ensemble_prediction = (
+    vgg_prediction + hybrid_prediction
+) / 2.0
 ```
-├── app.py                                  # The main Tkinter application script
-├── brain_tumor_vgg16.h5                    # The saved VGG16 model
-├── brain_tumor_hybrid_cnn_transformer.h5   # The saved CNN-Transformer model
-├── README.md                               # This README file
-└── (optional) requirements.txt             # File listing dependencies
+
+**Final Ensemble Accuracy:** 99.7%
+
+---
+
+## ⚙️ Tech Stack
+
+### Backend
+
+* Python
+* Flask
+* TensorFlow
+* NumPy
+* OpenCV
+
+### Frontend
+
+* HTML5
+* CSS3
+* JavaScript
+* Chart.js
+
+### Deep Learning
+
+* VGG16
+* CNN-Transformer
+* Ensemble Learning
+
+### Deployment
+
+* Render
+* GitHub
+
+---
+
+## 📂 Project Structure
+
+```text
+Brain_tumor_detection/
+│
+├── app.py
+├── requirements.txt
+├── Procfile
+├── render.yaml
+│
+├── brain_tumor_vgg16.h5
+├── brain_tumor_hybrid_cnn_transformer.h5
+│
+├── images/
+│   ├── home_pred.png
+│   └── graph.png
+│
+├── templates/
+│   └── index.html
+│
+└── static/
+    ├── style.css
+    └── uploads/
 ```
+
+---
+
+## 🚀 Installation
+
+### Clone Repository
+
+```bash
+git clone https://github.com/your-username/Brain_tumor_detection.git
+cd Brain_tumor_detection
+```
+
+### Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Run Application
+
+```bash
+python app.py
+```
+
+Open your browser and visit:
+
+```text
+http://127.0.0.1:5000
+```
+
+---
+
+## 🧪 How It Works
+
+1. User uploads an MRI scan.
+2. Image is preprocessed and resized to 150×150 pixels.
+3. VGG16 model generates a prediction.
+4. Hybrid CNN-Transformer model generates a prediction.
+5. Predictions are averaged using ensemble learning.
+6. Final classification and confidence score are generated.
+7. Results are displayed with probability analysis charts.
+
+---
+
+## 📈 Results
+
+| Model                  | Accuracy |
+| ---------------------- | -------- |
+| Hybrid CNN-Transformer | 59%      |
+| VGG16                  | 99.63%   |
+| Ensemble Model         | 99.7%    |
+
+The ensemble approach improved robustness and achieved the highest overall performance among all tested architectures.
+
+---
+
+## 🔮 Future Enhancements
+
+* Multi-class brain tumor classification
+* Grad-CAM explainability visualization
+* PDF report generation
+* Patient history management
+* Cloud-based model serving
+* Medical imaging dashboard
+
+---
+
+## 👨‍💻 Author
+
+**Rohit Singh Rawat**
+
+Developed as a deep learning and computer vision project for automated brain tumor detection using ensemble learning techniques.
+
+---
+
+## ⭐ Support
+
+If you found this project useful, consider giving it a star on GitHub.
